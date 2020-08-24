@@ -1,0 +1,134 @@
+%
+% programming by N.Goto
+%
+% 理事会運営細則
+
+\RequirePackage[l2tabu, orthodox]{nag}
+
+\documentclass[12pt,uplatex]{jsarticle}
+\和暦
+\usepackage[top=10truemm,bottom=15truemm,left=25truemm,right=20truemm]{geometry}
+\usepackage{calc}
+
+% 別表をpdfファイルとして取り込むために必要。
+\usepackage[dvipdfmx]{graphicx}
+% 一部の文章で行間を調整するための設定。
+\usepackage{setspace}
+% 文章全体の行間を設定。
+\renewcommand{\baselinestretch}{0.8}
+
+% 箇条書きを（）番号で表示。
+% \renewcommand{\labelenumi}{(\arabic{enumi})}
+\renewcommand{\labelenumi}{(\theenumi)}
+
+% 目次を作成するレベルの深さ。
+\setcounter{tocdepth}{5}
+
+% {description}箇条書きの設定。第２条の「用語の定義」用
+\renewenvironment{description}
+{\begin{list}{}{
+      \let\makelabel\descriptionlabel
+      \setlength\labelwidth{8em}% ラベルの幅。
+      \setlength\itemsep{0pt}% 行間スペース。
+      \setlength\parsep{0pt}% 段落間のスペース。
+      \setlength\labelsep{2pt}% ラベルと項目のスペース。
+      \setlength\leftmargin{\labelwidth+\labelsep}
+      }
+}
+{\end{list}}
+
+% 表紙、目次のページ番号を非表示にする。
+\pagestyle{empty}
+% 表紙
+\title{ソフィア・ガーデンズ川崎 \\  理事会運営細則}
+
+\begin{document}
+\maketitle
+% 表紙に目次を入れるために改ページをコメントアウト。
+% \clearpage
+% 目次
+\tableofcontents
+\clearpage
+% 本文のページ番号スタートを１に設定する。
+\addtocounter{page}{-1}
+% 本文ではページ番号をフッター中央に生成する。
+\pagestyle{plain}
+
+\begin{center}
+\subsection*{第1章 総則}
+\addcontentsline{toc}{subsection}{第１章 総則}
+\end{center}
+\subsubsection*{ 第1条（目的）}
+\addcontentsline{toc}{subsubsection}{ 第1条（目的）}
+この細則は、ソフィア・ガーデンズ川崎管理組合（以下「管理組合」という）管理規約（以下「規約」という）\
+に定めた理事会の運営を適正かつ円滑に行うため、規約第71条に基づき、この細則を定める。
+\subsubsection*{ 第2条（役員）}
+\addcontentsline{toc}{subsubsection}{ 第2条（役員）}
+役員は、組合員のうちから、総会で選任する。\\
+\textbf{2.}役員の任期は２年とし、毎年その半数を改選する。\\
+\textbf{3.}第１項の役員の候補者は、\\
+\textbf{4.}総会で役員を選任しようとするときには、総会議案書に理事及び監事候補者の氏名等を記載する。
+
+\subsubsection*{ 第3条（工事の区分）}
+\addcontentsline{toc}{subsubsection}{ 第3条（工事の区分）}
+修繕工事の規模と内容に応じて次の３ランクに分ける。
+\begin{enumerate}
+  \item 多額の費用を要する大規模修繕工事や臨時の改良・改善工事等
+  \item 多額の費用を要しない変更・改造工事及び経常的な維持・修繕工事
+  \item 工事費が30万円以下で、管理会計の小規模修繕費支出となるような維持・修繕工事
+\end{enumerate}
+\subsubsection*{ 第4条（発注方式）}
+\addcontentsline{toc}{subsubsection}{ 第4条（発注方式）}
+発注方式は、修繕工事の規模・条件に応じて次の方式を採用する。\
+\begin{enumerate}
+    \item 前条第1号に該当する大規模修繕工事では、「公開入札方式」を採用する。
+    \item 前条第2号、第3号に該当する工事については、「公開入札」以外に「指名入札」、「見積り合わせ入札」が採用できる。ただし、特別な事情(固有技術、過去に継続的な実績を持つなど)がある場合には「特命発注方式」をとることができる
+\end{enumerate}
+\subsubsection*{ 第5条（工事監理）}
+\addcontentsline{toc}{subsubsection}{ 第5条（工事監理）}
+第3条第1号に該当する大規模修繕工事では、監理業務の遂行に際し、建築の専門知識が求められるので、設計監理方式を採用し、外部の専門家に設計・監理を委託するものとする。大規模修繕以外の工事では、工事内容により責任施工方式をとることができる。\\
+\textbf{2.}監理の委託内容は、建物診断、修繕工事設計・見積要項書の作成、工事費用の算定、工事監査などを含み、組合側のパートナーとして工事内容に係わる説明、助言を行うものとする。\\
+\textbf{3.}第3条第2号に該当する工事であっても、高度な専門技術を必要とする工事（防水工事、構造に関わる工事等）では、外部の専門家に設計・監理を委託することができる。
+\subsubsection*{ 第6条（見積り依頼する業者の選択)}
+\addcontentsline{toc}{subsubsection}{ 第6条（見積り依頼する業者の選択）}
+修繕工事の見積りを依頼する業者は、次の基準により選択する。
+\begin{enumerate}
+  \item 第3条第1号の大規模修繕工事に係る監理業者は、集合住宅の設計監理業務に経験のある一級建築士または\
+ 建築士資格を持つマンション管理士が在籍する設計事務所とする。
+  \item 第3条第1号に該当する工事の施工業者の指名については、ゼネコン(総合建築会社・元請) または\
+ 専門業者(マンションリニューアル)とし、公的機関、建設業協会等の企業評価ランク等を参考にして、会社規模、\
+ 資本金もしくは工事保証保険加入状況、年間工事高、経営状態、集合住宅の大規模修繕の元請としての実績などを調査して見積り業者を選択する。
+  \item 第3条第2号に該当する工事の施工見積り業者は、対象とする工事内容に応じ、当該工事に実績のある専門業者を選択する。
+\end{enumerate}
+\textbf{2.}理事長は、見積り指名候補業者に、社歴・工事実績等会社の内容を明らかにできる資料を提出させた上で、理事会に諮り、数社の見積業者を決定し、組合広報等で組合員に通知する。\\
+\textbf{3.}工事の緊急性・特殊性によって、特定の業者に発注せざるを得ない場合は、修繕専門委員会に諮った上で、理事会で決定することができる。ただし、この場合は最も近い総会において,その経緯を報告するものとする。
+\subsubsection*{ 第7条（共通見積り要綱)}
+\addcontentsline{toc}{subsubsection}{ 第7条（共通見積り要綱)}
+理事長は、修繕専門委員会の協力を得て、当該工事の「共通見積要項」を作成し、工事費用を算定する。「共通見積要項」は、施工計画書、工事の範囲、設計図面、実施工程表、完成検査等を含む。\\
+\textbf{2.}大規模修繕においては、「共通見積要項」の作成に外部の専門家による調査・設計が必要になる場合は、「共通見積要項」の作成を含めて設計事務所にその作成を依頼することができる。
+\textbf{3.}大規模修繕においては、業者同士が顔を合わせる同時現場説明会を避けるものとする。
+\subsubsection*{ 第8条（修繕専門委員会)}
+\addcontentsline{toc}{subsubsection}{ 第8条（修繕専門委員会)}
+理事会は、規約第55条に基づき、工事の計画・発注等の業務を円滑・公正に進めるために、理事会を補佐することを目的として「修繕専門委員会(以下「専門委員会」と略)」を置くことができる。\\
+\textbf{2.}専門委員会の委員(以下「専門委員」と呼ぶ。)は、修繕工事等に関する専門知識を持った組合員や、理事経験者などから、広く人材を募った上で、理事会で協議し、理事長名で委嘱する。
+\subsubsection*{ 第9条（工事見積りの依頼)}
+\addcontentsline{toc}{subsubsection}{ 第9条（工事見積りの依頼)}
+理事長は、第6条により決定した工事見積業者に対し、「共通見積要項」その他必要な資料を添えて、期限を定めて見積書の提出を求める。\\
+\textbf{2.}見積書は、密閉封印して提出させる。また、見積業者に提供した関係図書はすべて回収する。
+
+
+
+
+
+\begin{center}
+\subsubsection*{附則}
+\addcontentsline{toc}{subsection}{附則}
+\end{center}
+\subsubsection*{第1条}
+\addcontentsline{toc}{subsubsection}{ 第1条}
+規約並びに本細則に定めのない事項は理事会の決定によるものとする。
+\subsubsection*{第2条}
+\addcontentsline{toc}{subsubsection}{ 第2条}
+この細則は、令和〇〇年〇月〇日から施行するものとする。
+
+\end{document}
