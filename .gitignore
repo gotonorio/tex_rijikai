@@ -4,5 +4,6 @@
 *.dvi
 *.toc
 *.zip
+*.numbers
 .vscode
 .DS_Store
