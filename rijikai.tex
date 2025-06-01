@@ -3,219 +3,222 @@
 %
 % 理事会運営細則
 
-\RequirePackage[l2tabu, orthodox]{nag}
+% -----------------------------------------------------------------
+% LuaLaTeX + jlreqの基本設定
+% -----------------------------------------------------------------
+\documentclass[
+  % LuaLaTeXを使う
+  luatex,
+  % 用紙サイズをA4にする
+  paper=a4paper,
+  % 欧文のフォントサイズを11ptにする
+  fontsize=11pt,
+  % 日本語のフォントサイズを11ptにする
+  jafontsize=11pt,
+  % 日本語組版処理の記述と矛盾する設定がある場合に通知
+  jlreq_notes,
+]{jlreq}
 
-\documentclass[12pt,uplatex]{jsarticle}
-\和暦
-\usepackage[top=10truemm,bottom=15truemm,left=25truemm,right=20truemm]{geometry}
+% 画面デバッグ用
+% \usepackage{showframe}
+% 箇条書き用
+\usepackage{enumitem}
+% 箇条書きを（）番号で表示。
+\setlist[enumerate,1]{
+  label=(\arabic*),
+  labelsep=0.5em,        % 番号と本文の間に適度なスペース
+  leftmargin=2.5em       % 全体の左余白も調整可
+}
+\usepackage{graphicx}
 \usepackage{calc}
 
-% 別表をpdfファイルとして取り込むために必要。
-\usepackage[dvipdfmx]{graphicx}
-
-% 一部の文章で行間を調整するための設定。
-\usepackage{setspace}
-% 文章全体の行間を設定。
-\renewcommand{\baselinestretch}{0.8}
-
-% multirow
-\usepackage{multicol}
+% -----------------------------------------------------------------
+% 理事会運営細則の設定
+% -----------------------------------------------------------------
+% 1ページをフルに使うためgeometryパッケージを使う（documentclassで文字数・行数の設定はできなくなる）
+\usepackage[top=10truemm,bottom=15truemm,left=25truemm,right=20truemm]{geometry}
+% 行間を標準の0.9とする
+\renewcommand{\baselinestretch}{0.9}
+% 表組のため
 \usepackage{multirow}
 
-% 箇条書きを（）番号で表示。
-% \renewcommand{\labelenumi}{(\arabic{enumi})}
-\renewcommand{\labelenumi}{(\theenumi)}
-
-% 目次を作成するレベルの深さ。
-\setcounter{tocdepth}{5}
-
-% {description}箇条書きの設定。
-\renewenvironment{description}
-{\begin{list}{}{
-      \let\makelabel\descriptionlabel
-      \setlength\labelwidth{8em}% ラベルの幅。
-      \setlength\itemsep{0pt}% 行間スペース。
-      \setlength\parsep{0pt}% 段落間のスペース。
-      \setlength\labelsep{2pt}% ラベルと項目のスペース。
-      \setlength\leftmargin{\labelwidth+\labelsep}
-      }
-}
-{\end{list}}
-
-% 表紙、目次のページ番号を非表示にする。
-\pagestyle{empty}
-% 表紙
-\title{ソフィア・ガーデンズ川崎 \\  理事会運営細則}
-
+% -----------------------------------------------------------------
+% ドキュメント本体
+% -----------------------------------------------------------------
 \begin{document}
-% 日付を表示
-\date{令和4年4月1日}
+  %
+  % 表紙
+  %
+  \title{窓ガラス等の改良細則}
+  % 日付を表示
+  \date{2022年4月1日}
+  \maketitle
+  \thispagestyle{empty}
+  \vspace*{3\baselineskip}
 
-\maketitle
-% 表紙に目次を入れるために改ページをコメントアウト。
-% \clearpage
-% 目次
-\tableofcontents
-\clearpage
-% 本文のページ番号スタートを１に設定する。
-\addtocounter{page}{-1}
-% 本文ではページ番号をフッター中央に生成する。
-\pagestyle{plain}
-
-\subsubsection*{ 第１条（目的）}
-\addcontentsline{toc}{subsubsection}{ 第１条（目的）}
-この細則は、ソフィア・ガーデンズ川崎管理組合（以下「管理組合」という）管理規約（以下「規約」という）\
-に定めた理事会の運営を適正かつ円滑に行うため、規約第71条に基づき、この細則を定める。
-\subsubsection*{ 第２条（役員の選任）}
-\addcontentsline{toc}{subsubsection}{ 第２条（役員の選任）}
-役員は以下の通りとする。
-\begin{enumerate}
-\item 理事長				１名
-\item 副理事長				１名
-\item 会計担当理事				２名
-\item 全体利用施設協議会担当理事		２名
-\item 理事（理事長、副理事長、会計担当理事、全体利用施設協議会担当理事を含む。以下同じ） １４名以内
-\item 監事    ２名
-\end{enumerate}
-\textbf{2.}理事および監事は、現に居住する組合員及びその組合員の委任を受けた、本マンションに現に居住する二親等内の成年親族とする。\\
-\textbf{3.}理事は原則として各階毎に1名を輪番制で選任する。\\
-\textbf{4.}理事長、副理事長、会計担当の選任方法は以下の通りとする。
-\begin{enumerate}
-\item 立候補者がいる場合はこれを優先する。
-\item 立候補者がいない場合は、前任の理事による推薦と理事の話し合いで決める。
-\end{enumerate}
-\textbf{4.}監事は理事会の「業務監査」と「会計監査」を行うため、理事を兼ねてはならない。\\
-\textbf{5.}監事は専門的知識を有する者、又は理事長経験者などから選任する。\\
-\textbf{6.}理事は高齢、病気、その他のやむを得ない理由がある場合は、総会の承認を受けて輪番から免除できるものとする。
-\subsubsection*{ 第３条（役員の任期）}
-\addcontentsline{toc}{subsubsection}{ 第３条（役員の任期）}
-理事の任期は、新たに就任した日の属する年度の通常総会が開かれた日の翌日から当該年度の翌々年度の通常総会の
-開かれる日までの２年間とする。\\
-\textbf{2.}理事は毎年その半数を改選する。\\
-\textbf{3.}理事の再任は妨げないが、続けての再任は1回までとする。\\
-\textbf{4.}監事の任期は第1項にある２年間とし、再任は妨げないが続けての再任は3回までとする。\\
-\textbf{5.}役員が第2条第2項の資格を失った場合には、その役員の地位を失う。\\
-\textbf{6.}監事は輪番において理事に選任されたものとしてカウントする。\\
-\textbf{7.}任期の満了または辞任によって退任する役員は、後任の役員が就任するまでの間、引き続きその職務を行う。
-\subsubsection*{ 第４条（理事会の開催）}
-\addcontentsline{toc}{subsubsection}{ 第４条（理事会の開催）}
-理事会は原則として毎月開催する。\\
-\textbf{2.}理事会の議案書は開催日の3日以上前に、書面又は電磁的記録により全ての理事、監事に配布されなければならない。\\
-\textbf{3.}監事は理事会に出席して意見を述べることはできるが、議決に加わることはできない。\\
-\textbf{4.}開催方法としては、会合方式以外にオンライン、文書回答方式による開催も可能とする。\\
-\textbf{5.}議長は議事開始の前に議事録担当者を指名しなければならない。\\
-\textbf{6.}理事に事故等があり、理事会に出席できない場合は、その配偶者又は本マンションに現に居住している二親等内の親族に限り、
-代理出席を認める。\\
-\textbf{7.}理事長は必要に応じて、専門家、関係者等を理事会に参加させることができる。
-\subsubsection*{ 第５条（組合員の傍聴）}
-\addcontentsline{toc}{subsubsection}{ 第５条（組合員の傍聴）}
-組合員から予め申し入れがあった場合、特別な事情がない限り理事会は傍聴者として会場へ入場させることができる。
-\subsubsection*{ 第６条（議事録の作成・保管）}
-\addcontentsline{toc}{subsubsection}{ 第６条（議事録の作成・保管）}
-議長は、書面又は電磁的記録により、議事録を作成しなければならない。\\
-\textbf{2.}議事録は1週間以内に作成し、迅速に回覧または配布しなければならない。\\
-\textbf{3.}議事録原本には、議長および議長の指名する、理事会に出席した理事の署名を付するものとする。\\
-\textbf{4.}電磁的議事録原本の場合、電子署名を付するものとする。ただし書面による議事録原本がある場合、
-電磁的議事録には電子署名は必要としない。
-\subsubsection*{ 第７条（帳票等の保管）}
-\addcontentsline{toc}{subsubsection}{ 第７条（帳票等の保管）}
-理事会は別に定める保管書類一覧表の書類を保管しなければならない。\\
-\subsubsection*{ 第８条（監事の報告）}
-\addcontentsline{toc}{subsubsection}{ 第８条（監事の報告）}
-監事は総会において、以下の報告をしなければならない。
-\begin{enumerate}
-  \item 理事会の業務の執行状況。
-  \item 点検・清掃・修繕工事などが適正に行われていること。
-  \item 総会に上程する議案が適正に行われているか。
-  \item 購入した備品・消耗品、支払いなどの会計処理。
-  \item 各種設備の点検報告書・工事報告書。
-  \item 預金残高、保険契約書、有価証券などの財産の状況。
-\end{enumerate}
-\textbf{2.} 監事は第1項の報告のため、理事会に必要資料の提出を必要な時期に求めることができる。
-\textbf{3.} 監査では別に定めるチェックリストを使用するものとする。
-
-\begin{center}
-\subsubsection*{附則}
-\addcontentsline{toc}{subsection}{附則}
-\end{center}
-\subsubsection*{第1条}
-\addcontentsline{toc}{subsubsection}{ 第1条}
-規約並びに本細則に定めのない事項は理事会の決定によるものとする。
-\subsubsection*{第2条}
-\addcontentsline{toc}{subsubsection}{ 第2条}
-この細則は、令和4年4月1日から施行するものとする。
-
-% \newpage
-% \begin{figure}[tp]
-% \addcontentsline{toc}{section}{保管書類一覧表}
-%   \addcontentsline{toc}{subsubsection}{保管書類一覧表}
-%   \centering
-%   \includegraphics[scale=0.85]{documents.pdf}
-% \end{figure}
-
-% 表組の罫線太さ
-\setlength{\arrayrulewidth}{0.2pt}
-
-\newpage
-\subsubsection*{保管資料一覧表}
-\addcontentsline{toc}{subsubsection}{ 保管資料一覧表 }
-\begin{table}[htbp]
-  \centering
-  \caption{保管資料一覧(東京都のマンション管理ガイドブックP54)}
-  \scalebox{0.85}{
-    \begin{tabular}{|l|l|c|l|} \hline
-      \multicolumn{2}{|c|}{帳票等} & 保存期間 & 備考 \\ \hline
-      \multirow{9}{*}{会計関係} & 収支決算書及び事業報告書 & 永久 & 決算承認後 \\ \cline{2-4}
-                                & 収支予算書及び事業計画書 & 永久 & 決算承認後 \\ \cline{2-4}
-                                & 監査報告書 & 永久 & 決算承認後 \\ \cline{2-4}
-                                & 預金通帳 & 永久 & 非使用分含む \\ \cline{2-4}
-                                & 什器備品台帳（総会議案書） & 永久 & 最新分のみ \\ \cline{2-4}
-                                & 預金出納帳（月次監査報告書） & 10年 & 決算承認後 \\ \cline{2-4}
-                                & 支出に関する請求書、領収書 & 10年 & 決算承認後 \\ \cline{2-4}
-                                & 金融機関届出印( 非使用分) & 5年 & 非使用後 \\ \cline{2-4}
-                                \hline
-      \multirow{5}{*}{工事関連} & 計画修繕等工事請負契約書 & 永久 &  \\ \cline{2-4}
-                                & 計画修繕等工事見積書 & 永久 & 契約締結分 \\ \cline{2-4}
-                                &  計画修繕等工事完了届及び保証 & 永久 &  \\ \cline{2-4}
-                                &  計画修繕等工事履歴 & 永久 &  \\ \cline{2-4}
-                                &  長期修繕計画書 & 永久 &  過去分含む \\ \cline{2-4}
-                                \hline
-      \multirow{2}{*}{総会関係} & 総会議案書及び総会議事録 & 永久 &  \\ \cline{2-4}
-                                & 総会出席票・委任状・議決権行使書 & 10年 & \\ \cline{2-4}
-                                \hline
-      \multirow{2}{*}{理事会関係} & 理事会議案書及び理事会議事録 & 永久 &  \\ \cline{2-4}
-                                & 理事会等の引継ぎ書 & 永久 & \\ \cline{2-4}
-                                \hline
-      \multirow{4}{*}{建物設備管理関係} & 設計図書 & 永久 & \\ \cline{2-4}
-                                & 建築確認通知書 & 永久 & \\ \cline{2-4}
-                                & 建物・設備点検等契約書 & 10年 & 契約期間満了後 \\ \cline{2-4}
-                                & 建物・設備点検等報告書 & 10年 & \\ \cline{2-4}
-                                \hline
-      \multirow{2}{*}{管理費等滞納関連} & 管理費等滞納状況 & 10年 &  債権回収後 \\ \cline{2-4}
-                                & 滞納管理費等督促履歴 & 10年 & 債権回収後\\ \cline{2-4}
-                                \hline
-      \multirow{4}{*}{管理業者関連} & 管理事務報告書( 年次報告書) & 永久 & \\ \cline{2-4}
-                                & 収支状況報告書( 月次報告書) & 永久 & \\ \cline{2-4}
-                                & 管理委託契約書 & 10年 & 契約期間満了後 \\ \cline{2-4}
-                                &  重要事項説明書 & 10年 & 契約期間満了後 \\ \cline{2-4}
-                                \hline
-      \multirow{2}{*}{管理規約関連} & 管理規約原本 & 永久 & 改定履歴含む \\ \cline{2-4}
-                                & 各種細則原本 & 永久 & 改訂履歴含む \\ \cline{2-4}
-                                \hline
-      \multirow{2}{*}{契約関連} & 駐車場等の使用契約書 & 5年 & 契約期間満了後 \\ \cline{2-4}
-                                &  保険証券 & 永久 &  \\ \cline{2-4}
-                                \hline
-      \multirow{2}{*}{名簿関係} & 組合員名簿 & 永久 &  \\ \cline{2-4}
-                                &  組合員等異動届 & 5年 &  \\ \cline{2-4}
-                                \hline
-      \multirow{2}{*}{売主関連} & アフターサービス基準書 & 永久 &  \\ \cline{2-4}
-                                & 売買契約書、重要事項説明書等 & 永久 &  \\ \cline{2-4}
-                                \hline
-      \multirow{2}{*}{その他} & 誓約書 & 1年 & 本人退去後 \\ \cline{2-4}
-                                &  専有部分修繕等工事 & 永久 & \\ \cline{2-4}
-                                \hline
-    \end{tabular}
+  % 目次
+  {
+    \small
+    \renewcommand{\baselinestretch}{0.8}\selectfont   % 改訂履歴の行間を調整する
+    \tableofcontents
   }
-\end{table}
+  \vfill      % ここで空白を最大限取る
+  \begin{center}
+    {\Large ソフィア・ガーデンズ川崎 管理組合}
+  \end{center}
+  \clearpage
+  
+
+  \pagenumbering{arabic}  % ページ番号をアラビア数字に
+  \setcounter{page}{1}    % 本文のページ番号スタートを１に設定
+  \pagestyle{plain}       % フッターの中央にページを配置
+
+  \subsubsection*{ 第１条（目的）}
+  \addcontentsline{toc}{subsubsection}{ 第１条（目的）}
+  この細則は、ソフィア・ガーデンズ川崎管理組合（以下「管理組合」という）管理規約（以下「規約」という）\
+  に定めた理事会の運営を適正かつ円滑に行うため、規約第71条に基づき、この細則を定める。
+  \subsubsection*{ 第２条（役員の選任）}
+  \addcontentsline{toc}{subsubsection}{ 第２条（役員の選任）}
+  役員は以下の通りとする。
+  \begin{enumerate}
+  \item 理事長１名
+  \item 副理事長１名
+  \item 会計担当理事２名
+  \item 全体利用施設協議会担当理事２名
+  \item 理事（理事長、副理事長、会計担当理事、全体利用施設協議会担当理事を含む。以下同じ） １４名以内
+  \item 監事    ２名
+  \end{enumerate}
+  \textbf{2.}理事および監事は、現に居住する組合員及びその組合員の委任を受けた、本マンションに現に居住する二親等内の成年親族とする。\\
+  \textbf{3.}理事は原則として各階毎に1名を輪番制で選任する。\\
+  \textbf{4.}理事長、副理事長、会計担当の選任方法は以下の通りとする。
+  \begin{enumerate}
+  \item 立候補者がいる場合はこれを優先する。
+  \item 立候補者がいない場合は、前任の理事による推薦と理事の話し合いで決める。
+  \end{enumerate}
+  \textbf{4.}監事は理事会の「業務監査」と「会計監査」を行うため、理事を兼ねてはならない。\\
+  \textbf{5.}監事は専門的知識を有する者、又は理事長経験者などから選任する。\\
+  \textbf{6.}理事は高齢、病気、その他のやむを得ない理由がある場合は、総会の承認を受けて輪番から免除できるものとする。
+  \subsubsection*{ 第３条（役員の任期）}
+  \addcontentsline{toc}{subsubsection}{ 第３条（役員の任期）}
+  理事の任期は、新たに就任した日の属する年度の通常総会が開かれた日の翌日から当該年度の翌々年度の通常総会の
+  開かれる日までの２年間とする。\\
+  \textbf{2.}理事は毎年その半数を改選する。\\
+  \textbf{3.}理事の再任は妨げないが、続けての再任は1回までとする。\\
+  \textbf{4.}監事の任期は第1項にある２年間とし、再任は妨げないが続けての再任は3回までとする。\\
+  \textbf{5.}役員が第2条第2項の資格を失った場合には、その役員の地位を失う。\\
+  \textbf{6.}監事は輪番において理事に選任されたものとしてカウントする。\\
+  \textbf{7.}任期の満了または辞任によって退任する役員は、後任の役員が就任するまでの間、引き続きその職務を行う。
+  \subsubsection*{ 第４条（理事会の開催）}
+  \addcontentsline{toc}{subsubsection}{ 第４条（理事会の開催）}
+  理事会は原則として毎月開催する。\\
+  \textbf{2.}理事会の議案書は開催日の3日以上前に、書面又は電磁的記録により全ての理事、監事に配布されなければならない。\\
+  \textbf{3.}監事は理事会に出席して意見を述べることはできるが、議決に加わることはできない。\\
+  \textbf{4.}開催方法としては、会合方式以外にオンライン、文書回答方式による開催も可能とする。\\
+  \textbf{5.}議長は議事開始の前に議事録担当者を指名しなければならない。\\
+  \textbf{6.}理事に事故等があり、理事会に出席できない場合は、その配偶者又は本マンションに現に居住している二親等内の親族に限り、
+  代理出席を認める。\\
+  \textbf{7.}理事長は必要に応じて、専門家、関係者等を理事会に参加させることができる。
+  \subsubsection*{ 第５条（組合員の傍聴）}
+  \addcontentsline{toc}{subsubsection}{ 第５条（組合員の傍聴）}
+  組合員から予め申し入れがあった場合、特別な事情がない限り理事会は傍聴者として会場へ入場させることができる。
+  \subsubsection*{ 第６条（議事録の作成・保管）}
+  \addcontentsline{toc}{subsubsection}{ 第６条（議事録の作成・保管）}
+  議長は、書面又は電磁的記録により、議事録を作成しなければならない。\\
+  \textbf{2.}議事録は1週間以内に作成し、迅速に回覧または配布しなければならない。\\
+  \textbf{3.}議事録原本には、議長および議長の指名する、理事会に出席した理事の署名を付するものとする。\\
+  \textbf{4.}電磁的議事録原本の場合、電子署名を付するものとする。ただし書面による議事録原本がある場合、
+  電磁的議事録には電子署名は必要としない。
+  \subsubsection*{ 第７条（帳票等の保管）}
+  \addcontentsline{toc}{subsubsection}{ 第７条（帳票等の保管）}
+  理事会は別に定める保管書類一覧表の書類を保管しなければならない。\\
+  \subsubsection*{ 第８条（監事の報告）}
+  \addcontentsline{toc}{subsubsection}{ 第８条（監事の報告）}
+  監事は総会において、以下の報告をしなければならない。
+  \begin{enumerate}
+    \item 理事会の業務の執行状況。
+    \item 点検・清掃・修繕工事などが適正に行われていること。
+    \item 総会に上程する議案が適正に行われているか。
+    \item 購入した備品・消耗品、支払いなどの会計処理。
+    \item 各種設備の点検報告書・工事報告書。
+    \item 預金残高、保険契約書、有価証券などの財産の状況。
+  \end{enumerate}
+  \textbf{2.} 監事は第1項の報告のため、理事会に必要資料の提出を必要な時期に求めることができる。
+  \textbf{3.} 監査では別に定めるチェックリストを使用するものとする。
+  
+  \begin{center}
+  \subsubsection*{附則}
+  \addcontentsline{toc}{subsection}{附則}
+  \end{center}
+  \subsubsection*{第1条}
+  \addcontentsline{toc}{subsubsection}{ 第1条}
+  規約並びに本細則に定めのない事項は理事会の決定によるものとする。
+  \subsubsection*{第2条}
+  \addcontentsline{toc}{subsubsection}{ 第2条}
+  この細則は、令和4年4月1日から施行するものとする。
+  
+  % 表組の罫線太さ
+  \setlength{\arrayrulewidth}{0.2pt}
+  
+  \newpage
+  \subsubsection*{保管資料一覧表}
+  \addcontentsline{toc}{subsubsection}{ 保管資料一覧表 }
+  \begin{table}[htbp]
+    \centering
+    \caption{保管資料一覧(東京都のマンション管理ガイドブックP54)}
+    \scalebox{0.85}{
+      \begin{tabular}{|l|l|c|l|} \hline
+        \multicolumn{2}{|c|}{帳票等} & 保存期間 & 備考 \\ \hline
+        \multirow{9}{*}{会計関係} & 収支決算書及び事業報告書 & 永久 & 決算承認後 \\ \cline{2-4}
+                                  & 収支予算書及び事業計画書 & 永久 & 決算承認後 \\ \cline{2-4}
+                                  & 監査報告書 & 永久 & 決算承認後 \\ \cline{2-4}
+                                  & 預金通帳 & 永久 & 非使用分含む \\ \cline{2-4}
+                                  & 什器備品台帳（総会議案書） & 永久 & 最新分のみ \\ \cline{2-4}
+                                  & 預金出納帳（月次監査報告書） & 10年 & 決算承認後 \\ \cline{2-4}
+                                  & 支出に関する請求書、領収書 & 10年 & 決算承認後 \\ \cline{2-4}
+                                  & 金融機関届出印( 非使用分) & 5年 & 非使用後 \\ \cline{2-4}
+                                  \hline
+        \multirow{5}{*}{工事関連} & 計画修繕等工事請負契約書 & 永久 &  \\ \cline{2-4}
+                                  & 計画修繕等工事見積書 & 永久 & 契約締結分 \\ \cline{2-4}
+                                  &  計画修繕等工事完了届及び保証 & 永久 &  \\ \cline{2-4}
+                                  &  計画修繕等工事履歴 & 永久 &  \\ \cline{2-4}
+                                  &  長期修繕計画書 & 永久 &  過去分含む \\ \cline{2-4}
+                                  \hline
+        \multirow{2}{*}{総会関係} & 総会議案書及び総会議事録 & 永久 &  \\ \cline{2-4}
+                                  & 総会出席票・委任状・議決権行使書 & 10年 & \\ \cline{2-4}
+                                  \hline
+        \multirow{2}{*}{理事会関係} & 理事会議案書及び理事会議事録 & 永久 &  \\ \cline{2-4}
+                                  & 理事会等の引継ぎ書 & 永久 & \\ \cline{2-4}
+                                  \hline
+        \multirow{4}{*}{建物設備管理関係} & 設計図書 & 永久 & \\ \cline{2-4}
+                                  & 建築確認通知書 & 永久 & \\ \cline{2-4}
+                                  & 建物・設備点検等契約書 & 10年 & 契約期間満了後 \\ \cline{2-4}
+                                  & 建物・設備点検等報告書 & 10年 & \\ \cline{2-4}
+                                  \hline
+        \multirow{2}{*}{管理費等滞納関連} & 管理費等滞納状況 & 10年 &  債権回収後 \\ \cline{2-4}
+                                  & 滞納管理費等督促履歴 & 10年 & 債権回収後\\ \cline{2-4}
+                                  \hline
+        \multirow{4}{*}{管理業者関連} & 管理事務報告書( 年次報告書) & 永久 & \\ \cline{2-4}
+                                  & 収支状況報告書( 月次報告書) & 永久 & \\ \cline{2-4}
+                                  & 管理委託契約書 & 10年 & 契約期間満了後 \\ \cline{2-4}
+                                  &  重要事項説明書 & 10年 & 契約期間満了後 \\ \cline{2-4}
+                                  \hline
+        \multirow{2}{*}{管理規約関連} & 管理規約原本 & 永久 & 改定履歴含む \\ \cline{2-4}
+                                  & 各種細則原本 & 永久 & 改訂履歴含む \\ \cline{2-4}
+                                  \hline
+        \multirow{2}{*}{契約関連} & 駐車場等の使用契約書 & 5年 & 契約期間満了後 \\ \cline{2-4}
+                                  &  保険証券 & 永久 &  \\ \cline{2-4}
+                                  \hline
+        \multirow{2}{*}{名簿関係} & 組合員名簿 & 永久 &  \\ \cline{2-4}
+                                  &  組合員等異動届 & 5年 &  \\ \cline{2-4}
+                                  \hline
+        \multirow{2}{*}{売主関連} & アフターサービス基準書 & 永久 &  \\ \cline{2-4}
+                                  & 売買契約書、重要事項説明書等 & 永久 &  \\ \cline{2-4}
+                                  \hline
+        \multirow{2}{*}{その他} & 誓約書 & 1年 & 本人退去後 \\ \cline{2-4}
+                                  &  専有部分修繕等工事 & 永久 & \\ \cline{2-4}
+                                  \hline
+      \end{tabular}
+    }
+  \end{table}
 
 \end{document}
